@@ -1,41 +1,41 @@
-/* components/Header/Header.module.css */
+/* components/Header/Header.css */
 .header {
   background: rgba(17, 24, 39, 0.9);
   backdrop-filter: blur(8px);
   border-bottom: 2px solid #3b82f6;
 }
 
-.container {
+.header-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.content {
+.header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 0;
 }
 
-.left {
+.header-left {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.icon {
+.header-icon {
   width: 2rem;
   height: 2rem;
   color: #fbbf24;
 }
 
-.title {
+.header-title {
   display: flex;
   flex-direction: column;
 }
 
-.mainTitle {
+.header-main-title {
   font-size: 1.875rem;
   font-weight: bold;
   background: linear-gradient(to right, #60a5fa, #fbbf24);
@@ -45,40 +45,40 @@
   margin: 0;
 }
 
-.subtitle {
+.header-subtitle {
   color: #d1d5db;
   margin: 0;
   font-size: 0.875rem;
 }
 
-.right {
+.header-right {
   text-align: right;
 }
 
-.republic {
+.header-republic {
   color: #fbbf24;
   font-weight: 600;
   margin: 0;
 }
 
-.motto {
+.header-motto {
   color: #9ca3af;
   font-size: 0.875rem;
   margin: 0;
 }
 
 @media (max-width: 768px) {
-  .content {
+  .header-content {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
   }
   
-  .right {
+  .header-right {
     text-align: center;
   }
   
-  .mainTitle {
+  .header-main-title {
     font-size: 1.5rem;
   }
 }

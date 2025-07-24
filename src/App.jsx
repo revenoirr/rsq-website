@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Header from './components/Header/Header';
 import Navigation from './components/Navigation/Navigation';
 import Home from './components/Home/Home';
-import Battalions from './components/Battalions/Battalions';
+import Battalions from './components/Batalions/Battalions';
 import Campaigns from './components/Campaigns/Campaigns';
 import Leadership from './components/Leadership/Leadership';
 import Gallery from './components/Gallery/Gallery';

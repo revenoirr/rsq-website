@@ -14,18 +14,18 @@ const Navigation = ({ activeTab, setActiveTab }) => {
   ];
 
   return (
-    <nav className={styles.navigation}>
-      <div className={styles.container}>
-        <div className={styles.navList}>
+    <nav className="navigation">
+      <div className="container">
+        <div className="nav-list">
           {navItems.map(({ id, label, icon: Icon }) => (
             <button
               key={id}
               onClick={() => setActiveTab(id)}
-              className={`${styles.navItem} ${
-                activeTab === id ? styles.navItemActive : ''
+              className={`nav-item ${
+                activeTab === id ? 'nav-item-active' : ''
               }`}
             >
-              <Icon className={styles.navIcon} />
+              <Icon className="nav-icon" />
               <span>{label}</span>
             </button>
           ))}

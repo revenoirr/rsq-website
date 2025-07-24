@@ -1,0 +1,241 @@
+/* components/Home/Home.module.css */
+.home {
+  max-width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #60a5fa 0%, #fbbf24 50%, #60a5fa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.heroText {
+  font-size: 1.25rem;
+  color: #d1d5db;
+  max-width: 4xl;
+  margin: 0 auto 2rem auto;
+  line-height: 1.7;
+}
+
+.heroActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(59, 130, 246, 0.4);
+}
+
+.secondaryButton {
+  background: transparent;
+  color: #60a5fa;
+  border: 2px solid #60a5fa;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background: #60a5fa;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Stats Section */
+.stats {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #60a5fa;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Info Sections */
+.infoSections {
+  margin-bottom: 3rem;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+/* Army Structure */
+.armyStructure {
+  margin-bottom: 3rem;
+}
+
+.structureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.structureItem {
+  background: rgba(31, 41, 55, 0.5);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #374151;
+}
+
+.structureItem h3 {
+  color: #fbbf24;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.structureItem ul {
+  list-style: none;
+  padding: 0;
+}
+
+.structureItem li {
+  color: #d1d5db;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #374151;
+  font-size: 0.875rem;
+}
+
+.structureItem li:last-child {
+  border-bottom: none;
+}
+
+/* Mission Section */
+.mission {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(251, 191, 36, 0.1));
+  padding: 3rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  text-align: center;
+}
+
+.missionContent h2 {
+  color: #60a5fa;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.missionContent p {
+  color: #d1d5db;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quote {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fbbf24;
+  font-style: italic;
+  position: relative;
+  margin: 0;
+}
+
+.quote::before {
+  content: '"';
+  font-size: 3rem;
+  color: #60a5fa;
+  position: absolute;
+  left: -2rem;
+  top: -0.5rem;
+}
+
+.quote::after {
+  content: '"';
+  font-size: 3rem;
+  color: #60a5fa;
+  position: absolute;
+  right: -2rem;
+  bottom: -1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+  
+  .heroText {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .heroActions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    width: 200px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+  
+  .infoGrid,
+  .structureGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mission {
+    padding: 2rem 1rem;
+  }
+  
+  .quote::before,
+  .quote::after {
+    display: none;
+  }
+}

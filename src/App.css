@@ -1,0 +1,47 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* App.css */
+.app {
+  min-height: 100vh;
+  background: black;
+  color: white;
+}
+
+.app__background {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, 
+    rgba(30, 58, 138, 0.2) 0%, 
+    black 50%, 
+    rgba(30, 58, 138, 0.2) 100%
+  );
+}
+
+.app__stars {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+    radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+}
+
+.app__content {
+  position: relative;
+  z-index: 10;
+}
+
+.app__main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}

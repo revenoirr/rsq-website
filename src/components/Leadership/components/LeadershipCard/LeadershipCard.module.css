@@ -1,0 +1,267 @@
+/* components/Leadership/components/LeadershipCard/LeadershipCard.module.css */
+.card {
+  background: rgba(31, 41, 55, 0.5);
+  border: 1px solid #374151;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.card--blue:hover { border-color: #3b82f6; }
+.card--green:hover { border-color: #10b981; }
+.card--yellow:hover { border-color: #f59e0b; }
+.card--purple:hover { border-color: #8b5cf6; }
+.card--orange:hover { border-color: #f97316; }
+.card--red:hover { border-color: #ef4444; }
+.card--cyan:hover { border-color: #06b6d4; }
+
+/* Header */
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(135deg, #60a5fa, #fbbf24);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarIcon {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+}
+
+.basicInfo {
+  flex: 1;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 0.25rem 0;
+}
+
+.rank {
+  color: #fbbf24;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.equivalent {
+  color: #60a5fa;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 0 0 0.25rem 0;
+  font-family: monospace;
+}
+
+.division {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.expandButton {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.expandButton:hover {
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.1);
+}
+
+/* Expanded Content */
+.expandedContent {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #374151;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bio */
+.bio {
+  margin-bottom: 1.5rem;
+}
+
+.bioTitle {
+  color: #60a5fa;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.bioText {
+  color: #d1d5db;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Achievements */
+.achievements {
+  margin-bottom: 1.5rem;
+}
+
+.achievementsTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fbbf24;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.achievementsIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.achievementsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievementItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #d1d5db;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.achievementIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: #fbbf24;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+/* Deputies */
+.deputies {
+  background: rgba(55, 65, 81, 0.3);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(55, 65, 81, 0.5);
+}
+
+.deputiesTitle {
+  color: #60a5fa;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.deputiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.deputyCard {
+  background: rgba(31, 41, 55, 0.5);
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #374151;
+  transition: all 0.2s ease;
+}
+
+.deputyCard:hover {
+  border-color: #4b5563;
+  background: rgba(31, 41, 55, 0.7);
+}
+
+.deputyInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.25rem;
+}
+
+.deputyRank {
+  color: #fbbf24;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.deputyName {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.deputySpecialization {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+  
+  .header {
+    gap: 0.75rem;
+  }
+  
+  .avatar {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .avatarIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .name {
+    font-size: 1.125rem;
+  }
+  
+  .deputyInfo {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}

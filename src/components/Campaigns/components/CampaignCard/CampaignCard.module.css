@@ -1,0 +1,385 @@
+/* components/Campaigns/components/CampaignCard/CampaignCard.module.css */
+.card {
+  display: flex;
+  gap: 1.5rem;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.cardSuccess {
+  --accent-color: #10b981;
+}
+
+.cardFailure {
+  --accent-color: #ef4444;
+}
+
+.cardProgress {
+  --accent-color: #06b6d4;
+}
+
+.cardPartial {
+  --accent-color: #f59e0b;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.timelineMarker {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1.125rem;
+  z-index: 2;
+}
+
+.markerSuccess {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+}
+
+.markerFailure {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
+}
+
+.markerProgress {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2);
+}
+
+.markerPartial {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+}
+
+.timelineLine {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-color), rgba(55, 65, 81, 0.5));
+  margin-top: 1rem;
+  min-height: 2rem;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  background: rgba(31, 41, 55, 0.5);
+  border: 1px solid #374151;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.content:hover {
+  border-color: var(--accent-color);
+  transform: translateX(4px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.headerLeft h3 {
+  margin: 0 0 0.5rem 0;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.planet {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d1d5db;
+  font-size: 0.875rem;
+}
+
+.planetIcon {
+  width: 1rem;
+  height: 1rem;
+  color: #fbbf24;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status {
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+.statusSuccess {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.statusFailure {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.statusProgress {
+  background: rgba(6, 182, 212, 0.2);
+  color: #22d3ee;
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.statusPartial {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.expandButton {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.expandButton:hover {
+  color: var(--accent-color);
+  background: rgba(55, 65, 81, 0.5);
+}
+
+/* Basic Info */
+.basicInfo {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d1d5db;
+  font-size: 0.875rem;
+}
+
+.infoIcon {
+  width: 1rem;
+  height: 1rem;
+  color: #9ca3af;
+}
+
+/* Expanded Content */
+.expandedContent {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #374151;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.description {
+  margin-bottom: 1.5rem;
+}
+
+.description p {
+  color: #d1d5db;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.details {
+  margin-bottom: 1.5rem;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detailLabel {
+  color: #fbbf24;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detailValue {
+  color: #d1d5db;
+  font-size: 0.875rem;
+}
+
+/* Objectives */
+.objectives {
+  margin-bottom: 1.5rem;
+}
+
+.objectivesTitle {
+  color: #60a5fa;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.objectivesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.objectiveItem {
+  position: relative;
+  padding-left: 1.5rem;
+  color: #d1d5db;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.objectiveItem::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+/* Failure Reasons */
+.failureReasons {
+  background: rgba(239, 68, 68, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.failureTitle {
+  color: #f87171;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.failureList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.failureItem {
+  position: relative;
+  padding-left: 1.5rem;
+  color: #fca5a5;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.failureItem::before {
+  content: '✗';
+  position: absolute;
+  left: 0;
+  color: #ef4444;
+  font-weight: bold;
+}
+
+/* Special Notes */
+.specialNotes {
+  background: rgba(59, 130, 246, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  margin-top: 1rem;
+}
+
+.specialNotesTitle {
+  color: #60a5fa;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.specialNotesText {
+  color: #d1d5db;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .timeline {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .timelineMarker {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+  
+  .timelineLine {
+    display: none;
+  }
+  
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .headerRight {
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .basicInfo {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+}

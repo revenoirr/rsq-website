@@ -1,0 +1,63 @@
+/* components/Navigation/Navigation.module.css */
+.navigation {
+  background: rgba(31, 41, 55, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navList {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.navList::-webkit-scrollbar {
+  display: none;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  border: none;
+  background: none;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  font-size: 0.875rem;
+}
+
+.navItem:hover {
+  color: white;
+}
+
+.navItemActive {
+  color: #60a5fa;
+  border-bottom-color: #60a5fa;
+}
+
+.navIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (max-width: 768px) {
+  .navList {
+    gap: 1rem;
+  }
+  
+  .navItem {
+    padding: 1rem 0.25rem;
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,171 @@
+/* components/Battalions/components/BattalionCard/BattalionCard.module.css */
+.card {
+  background: rgba(31, 41, 55, 0.5);
+  border: 1px solid #374151;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #60a5fa;
+  transform: translateY(-2px);
+}
+
+.card--red:hover { border-color: #ef4444; }
+.card--green:hover { border-color: #10b981; }
+.card--blue:hover { border-color: #3b82f6; }
+.card--yellow:hover { border-color: #f59e0b; }
+.card--purple:hover { border-color: #8b5cf6; }
+.card--cyan:hover { border-color: #06b6d4; }
+.card--orange:hover { border-color: #f97316; }
+.card--indigo:hover { border-color: #6366f1; }
+.card--pink:hover { border-color: #ec4899; }
+.card--gray:hover { border-color: #6b7280; }
+.card--black:hover { border-color: #374151; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #60a5fa;
+}
+
+.type {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.type--red { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+.type--green { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.type--blue { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+.type--yellow { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+.type--purple { background: rgba(139, 92, 246, 0.2); color: #a78bfa; }
+.type--cyan { background: rgba(6, 182, 212, 0.2); color: #22d3ee; }
+.type--orange { background: rgba(249, 115, 22, 0.2); color: #fb923c; }
+.type--indigo { background: rgba(99, 102, 241, 0.2); color: #818cf8; }
+.type--pink { background: rgba(236, 72, 153, 0.2); color: #f472b6; }
+.type--gray { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+.type--black { background: rgba(55, 65, 81, 0.2); color: #6b7280; }
+
+.expandButton {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.expandButton:hover {
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.name {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 1rem 0;
+}
+
+.leadership {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.leadershipItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  color: #fbbf24;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.value {
+  color: #d1d5db;
+  font-size: 0.875rem;
+}
+
+.expandedContent {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #374151;
+}
+
+.description {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.description p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.members {
+  margin-top: 1rem;
+}
+
+.membersTitle {
+  color: #fbbf24;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.membersList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.member {
+  background: #374151;
+  color: #d1d5db;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.member:hover {
+  background: #4b5563;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+  
+  .leadershipItem {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .membersList {
+    gap: 0.25rem;
+  }
+}

@@ -1,7 +1,7 @@
 // components/Gallery/Gallery.jsx
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Camera, Filter, Upload, LogIn } from 'lucide-react';
-import { galleryImages } from '../../data/galleryImages';
+import { galleryImages } from '../../data/galleryimages.js';
 import styles from './Gallery.module.css';
 
 const Gallery = () => {

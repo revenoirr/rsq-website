@@ -1,5 +1,5 @@
 // App.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { AuthProvider } from './contexts/AuthContext'; // Временно отключено
 import Header from './components/Header/Header.jsx';
 import Navigation from './components/Navigation/Navigation.jsx';
@@ -14,6 +14,20 @@ import './App.css';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('home');
+
+  // Динамическое изменение title в зависимости от активной вкладки
+  useEffect(() => {
+    const titles = {
+      home: '6-й корпус - Сверкающий бриллиант',
+      battalions: '6-й корпус - Батальоны', 
+      campaigns: '6-й корпус - Кампании',
+      leadership: '6-й корпус - Командование',
+      gallery: '6-й корпус - Галерея',
+      documents: '6-й корпус - Документы'
+    };
+    
+    document.title = titles[activeTab] || '6-й корпус - Сверкающий бриллиант';
+  }, [activeTab]);
 
   const renderContent = () => {
     switch (activeTab) {

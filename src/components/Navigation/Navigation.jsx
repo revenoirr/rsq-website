@@ -1,7 +1,7 @@
 // components/Navigation/Navigation.jsx
 import React from 'react';
 import { Star, Users, MapPin, FileText, Shield, Sword, Camera } from 'lucide-react';
-import styles from './Navigation.module.css';
+import styles from './Navigation.css';
 
 const Navigation = ({ activeTab, setActiveTab }) => {
   const navItems = [

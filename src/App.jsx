@@ -1,15 +1,15 @@
 // App.jsx
 import React, { useState } from 'react';
 // import { AuthProvider } from './contexts/AuthContext'; // Временно отключено
-import Header from './components/Header/Header';
-import Navigation from './components/Navigation/Navigation';
-import Home from './components/Home/Home';
-import Battalions from './components/Batalions/Battalions';
-import Campaigns from './components/Campaigns/Campaigns';
-import Leadership from './components/Leadership/Leadership';
-import Gallery from './components/Gallery/Gallery';
-import Documents from './components/Documents/Documents';
-import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header.jsx';
+import Navigation from './components/Navigation/Navigation.jsx';
+import Home from './components/Home/Home.jsx';
+import Battalions from './components/Battalions/Battalions.jsx';
+import Campaigns from './components/Campaigns/Campaigns.jsx';
+import Leadership from './components/Leadership/Leadership.jsx';
+import Gallery from './components/Gallery/Gallery.jsx';
+import Documents from './components/Documents/Documents.jsx';
+import Footer from './components/Footer/Footer.jsx';
 import './App.css';
 
 const App = () => {

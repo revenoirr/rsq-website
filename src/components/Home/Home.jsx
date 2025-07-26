@@ -40,9 +40,14 @@ const Home = () => {
           Война идёт уже второй год, и каждый клон на счету!
         </p>
         <div className={styles.heroActions}>
-          <button className={styles.primaryButton}>
+          <a 
+            href="https://discord.gg/rising-sun-quasar-arma-3-981509661926785064"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.primaryButton}
+          >
             Присоединиться к корпусу
-          </button>
+          </a>
           <button className={styles.secondaryButton}>
             Узнать больше
           </button>

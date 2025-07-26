@@ -31,6 +31,13 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
+// Временная отладка - удали после проверки
+console.log('Firebase config:', {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY ? 'Загружен' : 'НЕ ЗАГРУЖЕН',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ? 'Загружен' : 'НЕ ЗАГРУЖЕН',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID ? 'Загружен' : 'НЕ ЗАГРУЖЕН'
+});
+
 // Инициализация Firebase
 const app = initializeApp(firebaseConfig);
 

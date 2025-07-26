@@ -1,20 +1,58 @@
 // components/Gallery/Gallery.jsx
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Camera, Filter, Upload, LogIn } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Camera, Filter, Upload, LogIn, X } from 'lucide-react';
+import { useAuth } from '../../hooks/useAuth';
+import Login from '../Auth/Login';
+import ImageUpload from './ImageUpload';
 import { galleryImages } from '../../data/galleryimages.js';
+import { 
+  db, 
+  collection, 
+  getDocs, 
+  deleteDoc, 
+  doc, 
+  orderBy, 
+  query
+} from '../../utils/firebase';
 import styles from './Gallery.module.css';
 
 const Gallery = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [filterCategory, setFilterCategory] = useState('all');
-  
-  // Временные заглушки для авторизации
-  const currentUser = null; // Пока что всегда null
-  const logout = () => console.log('logout');
+  const [showLogin, setShowLogin] = useState(false);
+  const [showUpload, setShowUpload] = useState(false);
+  const [firebaseImages, setFirebaseImages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
+  const { currentUser, logout } = useAuth();
+
+  // Загрузка изображений из Firebase при монтировании компонента
+  useEffect(() => {
+    loadFirebaseImages();
+  }, []);
+
+  const loadFirebaseImages = async () => {
+    try {
+      const q = query(collection(db, 'gallery'), orderBy('createdAt', 'desc'));
+      const querySnapshot = await getDocs(q);
+      const images = [];
+      
+      querySnapshot.forEach((doc) => {
+        images.push({ id: doc.id, ...doc.data() });
+      });
+      
+      setFirebaseImages(images);
+    } catch (error) {
+      console.error('Ошибка при загрузке изображений:', error);
+    }
+  };
+
+  // Объединяем статические и загруженные изображения
+  const allImages = [...galleryImages, ...firebaseImages];
+  
   const filteredImages = filterCategory === 'all' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === filterCategory);
+    ? allImages 
+    : allImages.filter(img => img.category === filterCategory);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % filteredImages.length);
@@ -26,6 +64,39 @@ const Gallery = () => {
 
   const goToImage = (index) => {
     setCurrentImageIndex(index);
+  };
+
+  const handleUploadSuccess = () => {
+    setShowUpload(false);
+    loadFirebaseImages(); // Перезагружаем изображения
+  };
+
+  const handleDeleteImage = async (imageId) => {
+    if (!currentUser || !window.confirm('Вы уверены, что хотите удалить это изображение?')) {
+      return;
+    }
+
+    try {
+      setLoading(true);
+      
+      // Для Imgur изображений удаляем только запись из Firestore
+      // (изображения на Imgur останутся, но это нормально для бесплатного хостинга)
+      await deleteDoc(doc(db, 'gallery', imageId));
+      
+      // Обновляем локальное состояние
+      await loadFirebaseImages();
+      
+      // Корректируем индекс если нужно
+      if (currentImageIndex >= filteredImages.length - 1) {
+        setCurrentImageIndex(Math.max(0, filteredImages.length - 2));
+      }
+      
+    } catch (error) {
+      console.error('Ошибка при удалении изображения:', error);
+      alert('Ошибка при удалении изображения');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const categories = [
@@ -79,12 +150,17 @@ const Gallery = () => {
 
           {currentUser ? (
             <div className={styles.userActions}>
-              <button className={styles.uploadButton}>
+              <button 
+                className={styles.uploadButton}
+                onClick={() => setShowUpload(true)}
+              >
                 <Upload className={styles.uploadIcon} />
                 Добавить фото
               </button>
               <div className={styles.userInfo}>
-                <span className={styles.userEmail}>{currentUser.email}</span>
+                <span className={styles.userEmail}>
+                  {currentUser.nickname || currentUser.email}
+                </span>
                 <button className={styles.logoutButton} onClick={logout}>
                   Выйти
                 </button>
@@ -93,7 +169,7 @@ const Gallery = () => {
           ) : (
             <button 
               className={styles.loginButton}
-              onClick={() => alert('Форма входа будет здесь')}
+              onClick={() => setShowLogin(true)}
             >
               <LogIn className={styles.loginIcon} />
               Войти
@@ -127,6 +203,18 @@ const Gallery = () => {
             <ChevronRight className={styles.navIcon} />
           </button>
 
+          {/* Delete Button для загруженных пользователем изображений */}
+          {currentUser && currentImage.uploadedBy === currentUser.uid && (
+            <button 
+              onClick={() => handleDeleteImage(currentImage.id)}
+              className={styles.deleteButton}
+              disabled={loading}
+              title="Удалить изображение"
+            >
+              <X className={styles.deleteIcon} />
+            </button>
+          )}
+
           {/* Image Info Overlay */}
           <div className={styles.imageInfo}>
             <div className={styles.imageCounter}>
@@ -142,6 +230,11 @@ const Gallery = () => {
             <span className={styles.imageCategory}>{currentImage.categoryLabel}</span>
             {currentImage.date && (
               <span className={styles.imageDate}>{currentImage.date}</span>
+            )}
+            {currentImage.uploadedBy && (
+              <span className={styles.imageUploader}>
+                Загружено: {currentImage.uploaderNickname || 'Аноним'}
+              </span>
             )}
           </div>
         </div>
@@ -171,6 +264,18 @@ const Gallery = () => {
           ))}
         </div>
       </div>
+
+      {/* Модальные окна */}
+      {showLogin && (
+        <Login onClose={() => setShowLogin(false)} />
+      )}
+
+      {showUpload && (
+        <ImageUpload 
+          onClose={() => setShowUpload(false)}
+          onUploadSuccess={handleUploadSuccess}
+        />
+      )}
     </div>
   );
 };

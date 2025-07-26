@@ -1,6 +1,6 @@
 // App.jsx
 import React, { useState, useEffect } from 'react';
-// import { AuthProvider } from './contexts/AuthContext'; // Временно отключено
+import { AuthProvider } from './contexts/authProvider.jsx'; // Обновленный импорт
 import Header from './components/Header/Header.jsx';
 import Navigation from './components/Navigation/Navigation.jsx';
 import Home from './components/Home/Home.jsx';
@@ -49,23 +49,25 @@ const App = () => {
   };
 
   return (
-    <div className="app">
-      {/* Background with stars effect */}
-      <div className="app__background">
-        <div className="app__stars" />
-      </div>
+    <AuthProvider>
+      <div className="app">
+        {/* Background with stars effect */}
+        <div className="app__background">
+          <div className="app__stars" />
+        </div>
 
-      <div className="app__content">
-        <Header />
-        <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
-        
-        <main className="app__main">
-          {renderContent()}
-        </main>
+        <div className="app__content">
+          <Header />
+          <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+          
+          <main className="app__main">
+            {renderContent()}
+          </main>
 
-        <Footer />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </AuthProvider>
   );
 };
 

@@ -9,7 +9,7 @@ const Home = () => {
   const statsData = [
     { icon: Users, value: '14', label: 'Батальонов', color: 'blue' },
     { icon: MapPin, value: '19', label: 'Кампаний', color: 'green' },
-    { icon: Zap, value: '20', label: 'Корпусов в армии', color: 'yellow' },
+    { icon: Zap, value: '20', label: 'Секторальных армий', color: 'yellow' },
     { icon: Shield, value: '2', label: 'Года войны', color: 'red' }
   ];
 

@@ -1,6 +1,6 @@
 // components/Auth/Login.jsx
 import React, { useState } from 'react';
-import { useAuth } from '../../contexts/authContext';
+import { useAuth } from '../../hooks/useAuth';
 import { User, Lock, Eye, EyeOff, LogIn, UserPlus } from 'lucide-react';
 import styles from './Login.module.css';
 
@@ -8,6 +8,7 @@ const Login = ({ onClose }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [nickname, setNickname] = useState(''); // Новое поле
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,8 @@ const Login = ({ onClose }) => {
       if (isLogin) {
         await login(email, password);
       } else {
-        await register(email, password);
+        // При регистрации передаем также nickname
+        await register(email, password, nickname);
       }
       onClose();
     } catch (error) {
@@ -44,6 +46,14 @@ const Login = ({ onClose }) => {
         return 'Пароль слишком слабый';
       case 'auth/invalid-email':
         return 'Неверный формат email';
+      case 'auth/invalid-credential':
+        return 'Неверный email или пароль';
+      case 'auth/nickname-required':
+        return 'Укажите никнейм';
+      case 'auth/nickname-too-short':
+        return 'Никнейм должен содержать минимум 2 символа';
+      case 'auth/nickname-too-long':
+        return 'Никнейм не должен превышать 20 символов';
       default:
         return 'Произошла ошибка при авторизации';
     }
@@ -81,6 +91,24 @@ const Login = ({ onClose }) => {
               />
             </div>
           </div>
+
+          {!isLogin && (
+            <div className={styles.inputGroup}>
+              <div className={styles.inputWrapper}>
+                <User className={styles.inputIcon} />
+                <input
+                  type="text"
+                  placeholder="Никнейм"
+                  value={nickname}
+                  onChange={(e) => setNickname(e.target.value)}
+                  className={styles.input}
+                  required={!isLogin}
+                  minLength="2"
+                  maxLength="20"
+                />
+              </div>
+            </div>
+          )}
 
           <div className={styles.inputGroup}>
             <div className={styles.inputWrapper}>
